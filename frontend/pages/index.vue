@@ -45,9 +45,18 @@ async function sendMessage() {
     <div class="min-h-screen bg-zinc-900 text-white p-6">
         <h1 class="text-4xl font-bold mb-6 text-center">Assitente Pessoal de IA</h1>
         <div class="chat">
-            <div class="message" :class="msg.role === 'user' ? 'bg-blue-600 ml-auto max-w-[70%]' : 'bg-zinc-800 max-w-[70%]'" v-for="msg in messages" :key="msg.id">
-                <strong>{{  msg.role }}</strong>
-                <p>{{ msg.content }}</p>
+            <div 
+                v-for="msg in messages" 
+                :key="msg.id"
+                class="mb-4 flex" 
+                :class="msg.role === 'user' ? 'justify-end' : 'justify-start'" 
+            >
+                <div 
+                    class="max-w-[70%] px-4 py-3 rounded-2xl"
+                    :class="msg.role === 'user' ? 'bg-blue-600' : 'bg-zinc-800'"
+                >
+                    {{ msg.content }}
+                </div>
             </div>
 
             <div class="flex gap-2 mt-4">
